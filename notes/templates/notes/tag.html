@@ -1,0 +1,34 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+
+<main class="container">
+  <h1>{{tag}}</h1>
+  <ul class="card-container">
+    {% for note in notes %}
+    <li class="card">
+        <form class="form-note" method="post" id="delete-{{note.id}}" action="/delete">{% csrf_token %}</form>
+        <form class="form-note" method="post" id="update-{{note.id}}" action="/update">{% csrf_token %}</form>
+        <form class="form-note" method="post" id="get_tag-{{note.id}}" action="/get_tag">{% csrf_token %}</form>
+          <button class="delete-button" form="delete-{{note.id}}" formaction="/delete"> X </button>
+          <div class="card-title">
+            <textarea class="id" name="id" form="delete-{{note.id}}">{{note.id}}</textarea>
+            <textarea class="id" name="id" form="update-{{note.id}}">{{note.id}}</textarea>
+            <textarea class="autoresize" name="titulo" form="update-{{note.id}}">{{note.title}}</textarea>
+          </div>
+          <div class="card-content">
+            <textarea class="autoresize" name="detalhes" form="update-{{note.id}}">{{note.content}}</textarea>
+          </div>
+          <div class="button-container">
+            <button class="delb" form="update-{{note.id}}" formaction="/update"> update </button>
+          </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endblock %}
+</main>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}">
+    <script type="text/javascript" src="{% static 'notes/getit.js' %}"></script>
+    <meta charset="UTF-8" />
+    <title>Get-it</title>
+  </head>
+
+  <body>
+    {% block content %} {% endblock %}
+  </body>
+</html>
