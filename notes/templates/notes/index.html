@@ -5,11 +5,13 @@
 <div class="appbar">
   <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
   <span class="subtitle">Como o Post-it, mas com outro verbo</span>
-  <form method="post" action="all_tags">
-    {% csrf_token %}
-    <button type="submit" class="btn">All tags</button>
+  <div class = "button-tag-container">
+    <form method="post" action="all_tags" >
+      {% csrf_token %}
+      <button type="submit" class="btn2">All tags</button>
 
-  </form>
+    </form>
+  </div>
 </div>
 
 <main class="container">

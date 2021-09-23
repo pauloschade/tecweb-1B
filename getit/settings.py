@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n-jd^ku8q($t3kv(=10ge=u0-1wqb)2%p#9z0#zt5r^exk2s5@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['sleepy-bayou-10319.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -86,20 +86,20 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 #         'PORT': '5432',
 #     }
 #}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://localhost/getit?user=getituser&password=getitsenha',
-        conn_max_age=600,
-        ssl_require=not DEBUG
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgresql://localhost/getit?user=getituser&password=getitsenha',
+#         conn_max_age=600,
+#         ssl_require=not DEBUG
+#     )
+# }
 
 
 # Password validation

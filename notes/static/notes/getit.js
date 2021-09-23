@@ -39,6 +39,6 @@ function getRandomInt(min, max) {
       tag.className += ` card-color-${getRandomInt(
         1,
         5
-      )} card-rotation-${getRandomInt(1, 11)}`;
+      )}`;
     }
   });
