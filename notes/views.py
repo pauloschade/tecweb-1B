@@ -41,12 +41,10 @@ def delete(request):
     if request.method == 'POST':
         id = request.POST.get('id')
         tag = request.POST.get('tag')
-        print(tag)
         Note.objects.filter(id=id).delete()
 
         if tag is not None:
             tag_exist = Note.objects.filter(tag__name=tag)
-            print(tag_exist)
             if len(tag_exist) == 0:
                 Tag.objects.filter(name=tag).delete()
 
