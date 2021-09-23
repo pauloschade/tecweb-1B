@@ -11,6 +11,8 @@ def index(request):
 
         if len(tags) > 0:
             new_tag=tags[0]
+        elif tag == "":
+            new_tag = None
         else:
             new_tag=Tag(name=tag)
             new_tag.save()
@@ -38,7 +40,16 @@ def update(request):
 def delete(request):
     if request.method == 'POST':
         id = request.POST.get('id')
+        tag = request.POST.get('tag')
+        print(tag)
         Note.objects.filter(id=id).delete()
+
+        if tag is not None:
+            tag_exist = Note.objects.filter(tag__name=tag)
+            print(tag_exist)
+            if len(tag_exist) == 0:
+                Tag.objects.filter(name=tag).delete()
+
         return redirect('index')
     else:
         all_notes = Note.objects.all()
