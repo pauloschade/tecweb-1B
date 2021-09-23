@@ -35,7 +35,7 @@ def update(request):
     else:
         all_notes = Note.objects.all()
         all_tags = Tag.objects.all()
-        return render(request, 'notes/index.html', {'notes': all_notes, 'tags':all_tags})
+        return render(request, 'notes/index.html', {'notes': all_notes})
 
 def delete(request):
     if request.method == 'POST':
@@ -61,3 +61,8 @@ def get_tag(request):
     notes=Note.objects.filter(tag__name=tag)
 
     return render(request, 'notes/tag.html', {'notes': notes, 'tag' : tag})
+
+def all_tags(request):
+    all_tags = Tag.objects.all()
+    return render(request, 'notes/all_tags.html', {'all_tags' : all_tags})
+

@@ -5,6 +5,11 @@
 <div class="appbar">
   <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
   <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+  <form method="post" action="all_tags">
+    {% csrf_token %}
+    <button type="submit" class="btn">All tags</button>
+
+  </form>
 </div>
 
 <main class="container">
@@ -54,15 +59,6 @@
     </li>
     {% endfor %}
   </ul>
-  <div class="tag-container">
-    <h3>TAGS</h3>
-    <div class="card-container">
-      {% for tag in tags %}
-      <form class="form-note" method="post" id="get_tag-{{tag.id}}" action="/get_tag">{% csrf_token %}</form>
-      <textarea class="id" name="tag" form="get_tag-{{tag.id}}">{{tag.name}}</textarea>
-      <button class="tag" form="get_tag-{{tag.id}}" formaction="/get_tag">{{tag.name}}</button>
-      {% endfor %}
-    </div>
 </div>
   {% endblock %}
 </main>

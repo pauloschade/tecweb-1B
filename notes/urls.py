@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('update', views.update, name='update'),
     path('delete', views.delete, name = 'delete'),
-    path('get_tag', views.get_tag, name = 'get_tag')
+    path('get_tag', views.get_tag, name = 'get_tag'),
+    path('all_tags', views.all_tags, name = 'all_tags')
 ]
