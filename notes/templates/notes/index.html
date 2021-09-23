@@ -38,12 +38,10 @@
     <li class="card">
         <form class="form-note" method="post" id="delete-{{note.id}}" action="/delete">{% csrf_token %}</form>
         <form class="form-note" method="post" id="update-{{note.id}}" action="/update">{% csrf_token %}</form>
-        <form class="form-note" method="post" id="get_tag-{{note.id}}" action="/get_tag">{% csrf_token %}</form>
           <button class="delete-button" form="delete-{{note.id}}" formaction="/delete"> X </button>
           <div class="card-title">
             <textarea class="id" name="id" form="delete-{{note.id}}">{{note.id}}</textarea>
             <textarea class="id" name="id" form="update-{{note.id}}">{{note.id}}</textarea>
-            <textarea class="id" name="tag" form="get_tag-{{note.id}}">{{note.tag}}</textarea>
             <textarea class="autoresize" name="titulo" form="update-{{note.id}}">{{note.title}}</textarea>
           </div>
           <div class="card-content">
@@ -57,11 +55,13 @@
   </ul>
   <div class="tag-container">
     <h3>TAGS</h3>
-    <ul class="card-container">
+    <div class="card-container">
       {% for tag in tags %}
-      <button class="tag" form="get_tag-{{note.id}}" formaction="/get_tag">{{tag.name}}</button>
+      <form class="form-note" method="post" id="get_tag-{{tag.id}}" action="/get_tag">{% csrf_token %}</form>
+      <textarea class="id" name="tag" form="get_tag-{{tag.id}}">{{tag.name}}</textarea>
+      <button class="tag" form="get_tag-{{tag.id}}" formaction="/get_tag">{{tag.name}}</button>
       {% endfor %}
-    </ul>
+    </div>
 </div>
   {% endblock %}
 </main>
