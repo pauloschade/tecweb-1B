@@ -64,5 +64,5 @@ def get_tag(request):
 
 def all_tags(request):
     all_tags = Tag.objects.all()
-    return render(request, 'notes/all_tags.html', {'all_tags' : all_tags})
+    return render(request, 'notes/all_tags.html', {'tags' : all_tags})
 
